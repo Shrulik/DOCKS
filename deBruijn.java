@@ -3,10 +3,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Random;
-import java.util.Vector;
-import java.util.Arrays;
+import java.util.*;
 
 import gurobi.*;
 
@@ -30,8 +27,9 @@ public class deBruijn {
         public int log;
         public static byte[] E;
  
-        public static int removeILP(int k, int L, int alphabetSize, int time, Vector<Integer> decycling, String file, 
-        		PrintWriter out) throws IOException, GRBException {
+    public static int removeILP(int k, int L, int alphabetSize, int time, 
+								List<Integer> decycling, String file, 
+								PrintWriter out) throws IOException, GRBException {
             
             GRBEnv env = new GRBEnv("decycline_"+k+"_"+L+"_"+alphabetSize+".log");
             env.set(GRB.DoubleParam.TimeLimit, time);
