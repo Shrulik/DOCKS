@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Decycling {
 
@@ -16,7 +17,7 @@ public class Decycling {
         PrintWriter writer = new PrintWriter(outfile);
 
         // Find k-mer hitting set and write to file
-        Vector<Integer> d = decycling(k, alphabetSize, alphabet); // Generate decycling set
+        List<Integer> d = decycling(k, alphabetSize, alphabet); // Generate decycling set
         System.out.println("Finished decycling " + d.size());
         deBruijn G = new deBruijn(k, alphabetSize, alphabet);
         for (int i = 0; i < d.size(); i++) {
@@ -26,9 +27,9 @@ public class Decycling {
         writer.close();
     }
 
-    public static Vector<Integer> decycling(int k, int alphabetSize, String alphabet) {
+    public static List<Integer> decycling(int k, int alphabetSize, String alphabet) {
 
-        Vector<Integer> d_set = new Vector<Integer>();
+        List<Integer> d_set = new ArrayList<>();
 
         // go through the cycles using fkm
         int[] a = new int[k + 1];
